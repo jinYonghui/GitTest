@@ -1,0 +1,559 @@
+package com.kingteller.client.adapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+
+import com.kingteller.R;
+import com.kingteller.client.activity.workorder.CleanReportActivity;
+import com.kingteller.client.activity.workorder.LogisticsReportActivity;
+import com.kingteller.client.activity.workorder.OtherMatterReportActivity;
+import com.kingteller.client.activity.workorder.RepairReportActivity;
+import com.kingteller.client.activity.workorder.checkout.LogisticsReportCheckoutActivity;
+import com.kingteller.client.activity.workorder.checkout.OtherMatterReportCheckoutActivity;
+import com.kingteller.client.activity.workorder.checkout.RepairReportCheckoutActivity;
+import com.kingteller.client.bean.workorder.ReturnBackStatus;
+import com.kingteller.client.bean.workorder.WorkOrderBean;
+import com.kingteller.client.config.URLConfig;
+import com.kingteller.client.netauth.AjaxHttpCallBack;
+import com.kingteller.client.netauth.KTHttpClient;
+import com.kingteller.client.utils.ConfigUtils;
+import com.kingteller.client.utils.KingTellerProgress;
+import com.kingteller.client.view.KTAlertDialog;
+import com.kingteller.framework.http.AjaxParams;
+import com.kingteller.framework.utils.CommonUtils;
+
+/**
+ * 任务单适配器
+ * 
+ * @author jinyh
+ * */
+
+public class WorkOrderAdapter extends BaseAdapter {
+
+	private LayoutInflater inflater;
+	private List<WorkOrderBean> workOrderlist = new ArrayList<WorkOrderBean>();
+	private Context context;
+	private String tabName;
+	private WorkOrderBean workOrder;
+	private Callback callBack;
+	private String backorderType;
+
+	public WorkOrderAdapter(Context context,List<WorkOrderBean> workOrderlist){
+		inflater = LayoutInflater.from(context);
+		this.context = context;
+		this.workOrderlist = workOrderlist;
+	}
+	
+	public WorkOrderAdapter(Context context, List<WorkOrderBean> workOrderlist,String tabName) {
+		inflater = LayoutInflater.from(context);
+		this.workOrderlist = workOrderlist;
+		this.tabName = tabName;
+		this.context = context;
+	}
+
+	public void setLists(List<WorkOrderBean> workOrderlist) {
+		this.workOrderlist = workOrderlist;
+		notifyDataSetChanged();
+	}
+
+	public void addLists(List<WorkOrderBean> workOrderlist) {
+		this.workOrderlist.addAll(workOrderlist);
+		notifyDataSetChanged();
+	}
+
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		if (workOrderlist == null) {
+			return 0;
+		}
+		return workOrderlist.size();
+	}
+
+	@Override
+	public Object getItem(int arg0) {
+		// TODO Auto-generated method stub
+		return workOrderlist.get(arg0);
+	}
+
+	@Override
+	public long getItemId(int arg0) {
+		// TODO Auto-generated method stub
+		return arg0;
+	}   
+
+	@Override
+	public View getView(final int postion, View v, ViewGroup parent) {
+		// TODO Auto-generated method stub
+		workOrder = workOrderlist.get(postion);
+		
+		ViewHoler viewHoler = null;
+		if (v == null) {
+			viewHoler = new ViewHoler();
+			v = inflater.inflate(R.layout.item_workorder, null);
+			viewHoler.orderNo = (TextView) v.findViewById(R.id.orderNo);
+			viewHoler.orderStatus = (TextView) v.findViewById(R.id.orderStatus);
+			viewHoler.atmMsg = (TextView) v.findViewById(R.id.atmMsg);
+			viewHoler.wdsbjc = (TextView) v.findViewById(R.id.wdsbjc);
+			viewHoler.taskInfo = (TextView) v.findViewById(R.id.taskInfo);
+			viewHoler.assignMan = (TextView) v.findViewById(R.id.assignMan);
+			viewHoler.assignTime = (TextView) v.findViewById(R.id.assignTime);
+			viewHoler.backflag = (TextView) v.findViewById(R.id.backflag);
+			viewHoler.acceptMalf = (Button) v.findViewById(R.id.acceptMalf);
+			viewHoler.backMalf = (Button) v.findViewById(R.id.backMalf);
+			viewHoler.reportFill = (Button)v.findViewById(R.id.fillReport);
+			viewHoler.prearrangeDateStr = (TextView) v.findViewById(R.id.prearrangeDateStr);
+			viewHoler.status = (TextView) v.findViewById(R.id.status);
+			v.setTag(viewHoler);
+		}else{
+			viewHoler = (ViewHoler)v.getTag();
+		}
+		
+		viewHoler.orderNo.setText(workOrder.getOrderNo());
+		viewHoler.orderStatus.setText("["+getOrderType(workOrder.getOrderType())+"]");
+		viewHoler.atmMsg.setText(workOrder.getATMCode()+"("+workOrder.getATMBankcode()+")");
+		viewHoler.wdsbjc.setText(workOrder.getWdsbjc());
+		viewHoler.taskInfo.setText(workOrder.getTroubleRemark());
+		viewHoler.assignMan.setText(workOrder.getAssignName());
+		viewHoler.assignTime.setText(workOrder.getAssignTime());
+		
+		if(workOrder.getArrangeType().equals("1")){
+			viewHoler.prearrangeDateStr.setText(workOrder.getPrearrangeDateStr());
+			((LinearLayout)viewHoler.prearrangeDateStr.getParent()).setVisibility(View.VISIBLE);
+		}else{
+			((LinearLayout)viewHoler.prearrangeDateStr.getParent()).setVisibility(View.GONE);
+		}
+		
+		if(workOrder.getBackflag() > 0){
+			viewHoler.backflag.setVisibility(View.VISIBLE);
+		}else{
+			viewHoler.backflag.setVisibility(View.GONE);
+		}
+		if(tabName.equals("tab1")){
+			final String orderType = workOrder.getOrderType();
+			final String status = workOrder.getStatus();
+			final String orderId = workOrder.getOrderId();
+			viewHoler.acceptMalf.setVisibility(View.VISIBLE);
+			if( workOrder.getOrderType().equals("maintenance")){
+				if( "new".equals(status)){
+					viewHoler.acceptMalf.setText("接障");
+					if(workOrder.getCreateType().equals("P")){
+						viewHoler.backMalf.setVisibility(View.VISIBLE);
+					}else{
+						viewHoler.backMalf.setVisibility(View.GONE);
+					}
+				}else if("accept".equals(status)){
+					viewHoler.acceptMalf.setText("到达现场");
+					if(workOrder.getCreateType().equals("P")){
+						viewHoler.backMalf.setVisibility(View.VISIBLE);
+					}else{
+						viewHoler.backMalf.setVisibility(View.GONE);
+					}
+				}else if("arrive".equals(status)){
+					viewHoler.acceptMalf.setText("开始维护");
+					viewHoler.backMalf.setVisibility(View.GONE);
+				}else if("begin".equals(status)){
+					viewHoler.acceptMalf.setText("维护结束");
+					viewHoler.backMalf.setVisibility(View.GONE);
+				}
+			}else if(workOrder.getOrderType().equals("otherMatter")){
+				viewHoler.backMalf.setVisibility(View.GONE);
+				if( "new".equals(status)){
+					viewHoler.acceptMalf.setText("确认接收");
+				}else if("accept".equals(status)){
+					viewHoler.acceptMalf.setText("开始执行");
+				}else if("begin".equals(status)){
+					viewHoler.acceptMalf.setText("完成事物");
+				}
+			}else if(workOrder.getOrderType().equals("logistics")){
+				viewHoler.backMalf.setVisibility(View.GONE);
+				if( "new".equals(status)){
+					viewHoler.acceptMalf.setText("确认接收");
+				}else if("accept".equals(status)){
+					viewHoler.acceptMalf.setText("到达现场");
+				}else if("arrive".equals(status)){
+					viewHoler.acceptMalf.setText("装成完毕");
+				}else if("begin".equals(status)){
+					viewHoler.acceptMalf.setText("物流完成");
+				}
+			}else if(workOrder.getOrderType().equals("clean")){
+				viewHoler.backMalf.setVisibility(View.GONE);
+				if( "new".equals(status)){
+					viewHoler.acceptMalf.setText("接障");
+				}else if("accept".equals(status)){
+					viewHoler.acceptMalf.setText("到达现场");
+				}else if("arrive".equals(status)){
+					viewHoler.acceptMalf.setText("开始维护");
+				}else if("begin".equals(status)){
+					viewHoler.acceptMalf.setText("维护结束");
+				}
+			}
+			
+			viewHoler.acceptMalf.setOnClickListener( new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					KTAlertDialog dialog = new KTAlertDialog.Builder(context)
+					.setTitle("提示")
+					.setMessage("您确定要"+((Button)arg0).getText().toString()+"吗？")
+					.setPositiveButton("确定",new KTAlertDialog.OnClickListener() {
+								@Override
+								public void onClick(DialogInterface dialogInterface, int pos) {
+									submitStatus(orderId, status, orderType);
+									dialogInterface.dismiss();
+								}
+							})
+					.setNegativeButton("取消",new KTAlertDialog.OnClickListener() {
+								public void onClick(DialogInterface dialogInterface,int paramAnonymousInt) {
+									dialogInterface.dismiss();
+								}
+							}).create();
+					dialog.setCanceledOnTouchOutside(false);
+					dialog.show();
+			
+				}
+			});
+			
+			viewHoler.backMalf.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					
+					View layout = inflater.inflate(R.layout.item_layout_backworkorder, null);
+					
+					final Dialog dialog = new AlertDialog.Builder(context).create();
+					dialog.setCanceledOnTouchOutside(false);
+					dialog.show();
+					dialog.getWindow().setContentView(layout);
+					dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+					
+					final EditText editText = (EditText)layout.findViewById(R.id.backorderEditText);
+					RadioGroup group = (RadioGroup) layout.findViewById(R.id.radioGroup);
+					Button submit = (Button) layout.findViewById(R.id.submit);
+					Button cancel = (Button) layout.findViewById(R.id.cancel);
+					group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+						@Override
+						public void onCheckedChanged(RadioGroup group,int checkedId) {
+							if (checkedId == R.id.radioButton1) {
+								backorderType = "noerr";
+							}else if(checkedId == R.id.radioButton2){
+								backorderType = "assignerr";
+							}else if(checkedId == R.id.radioButton3){
+								backorderType = "noerr_repeat";
+							}
+						}
+					});
+					
+					submit.setOnClickListener(new View.OnClickListener() {
+						
+						@Override
+						public void onClick(View arg0) {
+							// TODO Auto-generated method stub
+							submitTd(orderId,status,orderType,backorderType,editText.getText().toString());
+							dialog.dismiss();
+						}
+					});
+					
+					cancel.setOnClickListener(new View.OnClickListener() {
+						
+						@Override
+						public void onClick(View arg0) {
+							// TODO Auto-generated method stub
+							dialog.dismiss();
+						}
+					});
+					
+				}
+			});
+		}else if(tabName.equals("tab2")){
+			final String orderno = workOrder.getOrderNo();
+			final String orderProperty = workOrder.getOrderType();
+			viewHoler.reportFill.setVisibility(View.VISIBLE);
+			viewHoler.reportFill.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					
+					Intent intent = new Intent();
+					intent.putExtra("reportBean", workOrderlist.get(postion));
+					intent.putExtra("backflag", workOrderlist.get(postion).getBackflag());
+					if("maintenance".equals(workOrderlist.get(postion).getOrderType())){
+						intent.setClass(context, RepairReportActivity.class);
+					}else if("otherMatter".equals(workOrderlist.get(postion).getOrderType())){
+						intent.setClass(context, OtherMatterReportActivity.class);	
+					}else if("logistics".equals(workOrderlist.get(postion).getOrderType())){
+						intent.setClass(context, LogisticsReportActivity.class);
+					}else if("clean".equals(workOrderlist.get(postion).getOrderType())){
+						intent.setClass(context, CleanReportActivity.class);
+					}
+					context.startActivity(intent);	
+					
+				} 
+			});
+		}else if(tabName.equals("tab3")){
+			viewHoler.backflag.setVisibility(View.VISIBLE);
+			viewHoler.backflag.setTextSize(10.0f);
+			if(workOrder.getReportFlowStatus().equals("20")){
+				viewHoler.backflag.setText("服务站负责人审核中");
+			}else if(workOrder.getReportFlowStatus().equals("30")){
+				viewHoler.backflag.setText("信息管理员审核中");
+			}
+			v.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					new KTAlertDialog.Builder(context)
+					.setTitle("提示")
+					.setMessage("您确定要查看报告吗？")
+					.setPositiveButton("确定",
+							new KTAlertDialog.OnClickListener() {
+								@Override
+								public void onClick(
+										DialogInterface dialogInterface, int pos) {
+									Intent intent = new Intent();
+									intent.putExtra("reportBean", workOrderlist.get(postion));
+									intent.putExtra("isCheckout", "checkout");
+									intent.putExtra("backflag", workOrderlist.get(postion).getBackflag());
+									if("maintenance".equals(workOrderlist.get(postion).getOrderType())){
+										intent.setClass(context, RepairReportCheckoutActivity.class);
+									}
+									context.startActivity(intent);
+									dialogInterface.dismiss();
+								}
+							})
+					.setNegativeButton("取消",
+							new KTAlertDialog.OnClickListener() {
+								public void onClick(
+										DialogInterface dialogInterface,
+										int paramAnonymousInt) {
+									dialogInterface.dismiss();
+								}
+							}).create().show();
+
+				}
+			});
+			
+		}else{
+			final String status = workOrder.getStatus();
+			viewHoler.reportFill.setVisibility(View.GONE);
+			viewHoler.acceptMalf.setVisibility(View.GONE);
+			((LinearLayout)viewHoler.status.getParent()).setVisibility(View.VISIBLE);
+			viewHoler.status.setText(getStatus(status));
+			if(status.equals("finish")){
+
+				v.setOnClickListener(new View.OnClickListener() {
+					
+					@Override
+					public void onClick(View arg0) {
+						// TODO Auto-generated method stub
+						new KTAlertDialog.Builder(context)
+						.setTitle("提示")
+						.setMessage("您确定要查看报告吗？")
+						.setPositiveButton("确定",
+								new KTAlertDialog.OnClickListener() {
+									@Override
+									public void onClick(
+											DialogInterface dialogInterface, int pos) {
+										Intent intent = new Intent();
+										intent.putExtra("reportBean", workOrderlist.get(postion));
+										intent.putExtra("isCheckout", "checkout");
+										intent.putExtra("backflag", workOrderlist.get(postion).getBackflag());
+										if("maintenance".equals(workOrderlist.get(postion).getOrderType())){
+											intent.setClass(context, RepairReportCheckoutActivity.class);
+										}else if("otherMatter".equals(workOrderlist.get(postion).getOrderType())){
+											intent.setClass(context, OtherMatterReportCheckoutActivity.class);	
+										}else if("logistics".equals(workOrderlist.get(postion).getOrderType())){
+											intent.setClass(context, LogisticsReportCheckoutActivity.class);
+										}else if("clean".equals(workOrderlist.get(postion).getOrderType())){
+											intent.setClass(context, CleanReportActivity.class);
+										}
+										context.startActivity(intent);
+										dialogInterface.dismiss();
+									}
+								})
+						.setNegativeButton("取消",
+								new KTAlertDialog.OnClickListener() {
+									public void onClick(
+											DialogInterface dialogInterface,
+											int paramAnonymousInt) {
+										dialogInterface.dismiss();
+									}
+								}).create().show();
+						
+					}
+				});
+			}
+		}
+		return v;
+	}
+	
+	
+	public void submitStatus(String orderId,String status,String orderType){
+		KingTellerProgress.showProgress(context, "正在提交...");
+		KTHttpClient fh = new KTHttpClient(true);
+		AjaxParams params = new AjaxParams();
+		params.put("orderId",orderId);
+		params.put("status",status);
+		params.put("orderType", orderType);
+		
+		fh.get(ConfigUtils.CreateNoVersionUrl(context, URLConfig.WebRwdztUrl),
+				params, new AjaxHttpCallBack<ReturnBackStatus>(context,true) {
+			
+					@Override
+					public void onFinish() {
+						KingTellerProgress.closeProgress();
+					}
+					
+					@Override
+					public void onDo(ReturnBackStatus data) {
+						if( data.getResult().equals("fail")){
+							callBack.onFalse(data.getMessage());
+						}else if(data.getResult().equals("success")){
+							callBack.onSuccess();
+						}
+					};
+				});
+	}
+	
+	public void submitTd(String orderId,String status,String orderType,String backorderType,String backorderRemark){
+		KingTellerProgress.showProgress(context, "正在提交...");
+		KTHttpClient fh = new KTHttpClient(true);
+		AjaxParams params = new AjaxParams();
+		params.put("orderId",orderId);
+		params.put("status",status);
+		params.put("orderType", orderType);
+		params.put("backorderRemark", backorderRemark);
+		params.put("backorderType", backorderType);
+		params.put("direction", "-1");
+		
+		fh.get(ConfigUtils.CreateNoVersionUrl(context, URLConfig.WebRwdztUrl),
+				params, new AjaxHttpCallBack<ReturnBackStatus>(context,true) {
+			
+					@Override
+					public void onFinish() {
+						KingTellerProgress.closeProgress();
+					}
+					
+					@Override
+					public void onDo(ReturnBackStatus data) {
+						if( data.getResult().equals("fail")){
+							callBack.onFalse(data.getMessage());
+						}else if(data.getResult().equals("success")){
+							callBack.onSuccess();
+						}
+					};
+				});
+	}
+	
+	public String getStatus(String status){
+		if( workOrder.getOrderType().equals("maintenance")){
+			if( "new".equals(status)){
+				return "新单";
+			}else if("accept".equals(status)){
+				return "接障";
+			}else if("arrive".equals(status)){
+				return "到达现场";
+			}else if("begin".equals(status)){
+				return "开始维护";
+			}else if("finish".equals(status)){
+				return "维护结束";
+			}
+		}else if(workOrder.getOrderType().equals("otherMatter")){
+			if( "new".equals(status)){
+				return "新单";
+			}else if("accept".equals(status)){
+				return "确认接收";
+			}else if("begin".equals(status)){
+				return "开始执行";
+			}else if("finish".equals(status)){
+				return "完成事物";
+			}
+		}else if(workOrder.getOrderType().equals("logistics")){
+			if( "new".equals(status)){
+				return "新单";
+			}else if("accept".equals(status)){
+				return "确认接收";
+			}else if("arrive".equals(status)){
+				return "到达现场";
+			}else if("begin".equals(status)){
+				return "装车完毕";
+			}else if("finish".equals(status)){
+				return "物流完成";
+			}
+		}else if(workOrder.getOrderType().equals("clean")){
+			if( "new".equals(status)){
+				return "新单";
+			}else if("accept".equals(status)){
+				return "接障";
+			}else if("arrive".equals(status)){
+				return "到达现场";
+			}else if("begin".equals(status)){
+				return "开始维护";
+			}else if("finish".equals(status)){
+				return "维护结束";
+			}
+		}
+		return "";
+	}
+	
+	public String getOrderType(String orderType){
+		String type = "";
+		if(CommonUtils.isEmpty(orderType)){
+			type = "";
+		}else if("maintenance".equals(orderType)){
+			type = "维护";
+		}else if("otherMatter".equals(orderType)){
+			type = "其他事物";
+		}else if("logistics".equals(orderType)){
+			type = "物流";
+		}else if("clean".equals(orderType)){
+			type = "清洁";
+		}
+		return type;
+	}
+	
+	private static class ViewHoler{
+		public TextView orderNo;
+		public TextView orderStatus;
+		public TextView atmMsg;
+		public TextView wdsbjc;
+		public TextView taskInfo;
+		public TextView assignMan;
+		public TextView assignTime;
+		public TextView backflag;
+		public TextView prearrangeDateStr;
+		public TextView status;
+
+		public Button acceptMalf,backMalf,reportFill;
+	} 
+
+	public void setCallBack(Callback callBack) {
+		this.callBack = callBack;
+	}
+
+	public interface Callback{
+		public void onSuccess();
+		public void onFalse(String msg);
+	}
+}

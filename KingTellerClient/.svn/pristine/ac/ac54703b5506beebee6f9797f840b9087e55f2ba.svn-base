@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_input_height"
+        android:background="@color/white"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal"
+        android:paddingLeft="10.0dip" >
+
+        <View
+            android:id="@+id/address_icon"
+            android:layout_width="36.0dip"
+            android:layout_height="36.0dip"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/start_address0" />
+
+        <EditText
+            android:id="@+id/edit"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="@color/transparent"
+            android:ems="10"
+            android:hint="选择起点"
+            android:paddingLeft="10.0dip"
+            android:singleLine="true"
+            android:textColor="@color/black" >
+
+            <requestFocus />
+        </EditText>
+
+        <View
+            android:id="@+id/delete"
+            android:layout_width="24.0dip"
+            android:layout_height="24.0dip"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/edit_delete"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/search"
+            android:layout_width="72.0dip"
+            android:layout_height="fill_parent"
+            android:layout_gravity="right|center"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <View
+                android:layout_width="36.0dip"
+                android:layout_height="36.0dip"
+                android:background="@drawable/search" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progress"
+            style="@android:attr/progressBarStyleSmall"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="5dip"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/navigation_item_divide"
+        android:background="@color/navigation_item_divide" />
+    
+    <include layout="@layout/common_list_view"/>
+
+</LinearLayout>

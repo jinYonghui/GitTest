@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kingteller"
+    android:versionCode="12"
+    android:versionName="2.0.6" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+
+    <permission
+        android:name="com.kingteller.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.kingteller.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- 短信权限 -->
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <!-- 二维码 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="false" />
+    <uses-feature android:name="android.hardware.screen.landscape" />
+    <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
+    <!-- Donut-specific flags which allow us to run on any dpi screens. -->
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <application
+        android:name=".client.KingTellerApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/XTheme" >
+        <activity
+            android:name=".client.activity.account.LoginActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/YTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".client.activity.common.CommonWebViewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.common.CommonListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.common.FloatActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/YTheme" />
+        <activity
+            android:name=".client.activity.common.SelectAddressActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.common.CommonSelectDataActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.common.CommonSelectDataSearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.common.SelectMapAddressActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.common.PicViewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name=".client.activity.common.SelectATMCodeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.more.AboutUsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.more.FeedBackActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.map.MapMainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.map.MobileNavActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.map.StaffLocationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.map.StaffSearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.map.SetNavLineActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.map.ATMUploadActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.map.ATMAddActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.map.StaffLocusActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kingteller.modules.zxing.core.CaptureActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.kingteller.client.activity.account.MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" />
+
+        <!-- 工作流部分 -->
+        <activity
+            android:name=".client.activity.workorder.WorkOrderActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.workorder.WorkOrderSearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.workorder.SendOrderListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.workorder.RepairReportActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.workorder.checkout.RepairReportCheckoutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.workorder.RapairSendOrderActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.workorder.MachineSearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.workorder.RapairReportWebViewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.workorder.AssignWorkerSearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.workorder.OtherMatterReportActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.workorder.SendOrderSearchListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.workorder.checkout.OtherMatterReportCheckoutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.workorder.LogisticsReportActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.workorder.checkout.LogisticsReportCheckoutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.workorder.CleanReportActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.workorder.AduitReportActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.workorder.FeeChooserActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- 知识库 -->
+        <activity
+            android:name=".client.activity.knowledge.KnowledgeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".client.activity.common.CommonSelectGtgjActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".client.activity.common.CommonSelectClgcActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".client.activity.pxkhsj.DoPxkhsjListActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".client.activity.pxkhsj.DoPxkhSjActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 物流监控 -->
+        <activity
+            android:name=".client.activity.logisticmonitor.WLJKMainActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".client.activity.logisticmonitor.LogisticOrderListActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".client.activity.logisticmonitor.OtherTaskActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".client.activity.logisticmonitor.TaskNRActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".client.activity.logisticmonitor.OtherTaskListActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- 文件选择器 -->
+        <activity
+            android:name=".modules.filechooser.FileChooserActivity"
+            android:screenOrientation="portrait" />
+        <!-- 通用树形选择器 -->
+        <activity
+            android:name=".client.activity.common.TreeChooserActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- 自定义服务（上传经纬度、验证登录、重新登录） -->
+        <service
+            android:name=".client.service.KingTellerService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.kingteller.client.service.KingTellerServiceAction" />
+            </intent-filter>
+        </service>
+
+        <!-- 网络错误定义消息receiver声明 -->
+        <receiver android:name=".client.recever.KingTellerBroadCastRecever" >
+            <intent-filter>
+
+                <!-- 接收push消息 -->
+                <action android:name="com.kingteller.client.recever.KingTellerBroadCastRecever.netErrorAction" />
+                <action android:name="com.kingteller.client.recever.KingTellerBroadCastRecever.authErrorAction" />
+                <action android:name="com.kingteller.client.recever.KingTellerBroadCastRecever.dataErrorAction" />
+                <action android:name="com.kingteller.client.recever.KingTellerBroadCastRecever.OpenMainActivityAction" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 短信广播事件 -->
+        <receiver android:name=".client.recever.SMSBroadcaster" >
+            <intent-filter android:priority="2147483647" >
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 高德地图appkey -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="950db943bbfd8dbcba07ec24cad68b26" />
+
+        <!-- jpush推送 -->
+        <!-- Required SDK核心功能 -->
+        <activity
+            android:name="cn.jpush.android.ui.PushActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.kingteller" />
+            </intent-filter>
+        </activity>
+        <!-- Required  SDK核心功能 -->
+        <service
+            android:name="cn.jpush.android.service.DownloadService"
+            android:enabled="true"
+            android:exported="false" >
+        </service>
+
+        <!-- Required SDK 核心功能 -->
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER" />
+                <action android:name="cn.jpush.android.intent.REPORT" />
+                <action android:name="cn.jpush.android.intent.PushService" />
+                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+            </intent-filter>
+        </service>
+
+        <!-- Required SDK核心功能 -->
+        <receiver
+            android:name="cn.jpush.android.service.PushReceiver"
+            android:enabled="true" >
+            <intent-filter android:priority="1000" >
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" /> <!-- Required  显示通知栏 -->
+                <category android:name="com.kingteller" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <!-- Optional -->
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Required SDK核心功能 -->
+        <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
+
+        <!-- User defined.  For test only  用户自定义的广播接收器 -->
+        <receiver
+            android:name=".client.recever.JPushReceiver"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION" /> <!-- Required  用户注册SDK的intent -->
+                <action android:name="cn.jpush.android.intent.UNREGISTRATION" />
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> <!-- Required  用户接收SDK消息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> <!-- Required  用户接收SDK通知栏信息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> <!-- Required  用户打开自定义通知栏的intent -->
+                <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" /> <!-- Optional 用户接受Rich Push Javascript 回调函数的intent -->
+                <category android:name="com.kingteller" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Required  . Enable it you can get statistics data with channel -->
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="developer-default" />
+        <!-- 值来自开发者平台取得的AppKey -->
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="814cbe13798228d98efcd553" />
+    </application>
+
+</manifest>

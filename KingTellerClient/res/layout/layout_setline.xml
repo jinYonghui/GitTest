@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/layout_map"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+        <include layout="@layout/common_map_view" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_set_line"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_margin"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/common_padding5"
+            android:paddingRight="@dimen/common_padding5" >
+
+            <com.kingteller.client.view.ChangeColorButton
+                xmlns:aaron="http://schemas.android.com/apk/res/com.kingteller"
+                android:id="@+id/edittext_start"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_input_height"
+                android:layout_weight="1"
+                aaron:drawable="@drawable/start_address0"
+                aaron:hintDrawable="@drawable/start_address2"
+                aaron:hintString="起点" />
+
+            <Button
+                android:id="@+id/start_mac_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginRight="5dp"
+                android:background="@color/transparent"
+                android:text="选择机器"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/navigation_item_divide"
+            android:background="@color/navigation_item_divide" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/common_padding5"
+            android:paddingRight="@dimen/common_padding5" >
+
+            <com.kingteller.client.view.ChangeColorButton
+                xmlns:aaron="http://schemas.android.com/apk/res/com.kingteller"
+                android:id="@+id/edittext_end"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_input_height"
+                android:layout_weight="1"
+                aaron:drawable="@drawable/end_address0"
+                aaron:hintDrawable="@drawable/end_address2"
+                aaron:hintString="终点" />
+
+            <Button
+                android:id="@+id/end_mac_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginRight="5dp"
+                android:background="@color/transparent"
+                android:text="选择机器"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/navigation_item_divide"
+            android:background="@color/navigation_item_divide" />
+
+        <LinearLayout
+            android:id="@+id/btn_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="@dimen/common_padding" >
+
+            <Button
+                android:id="@+id/imagebtn_roadsearch_tab_transit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:background="@drawable/mode_transit" />
+
+            <Button
+                android:id="@+id/imagebtn_roadsearch_tab_driving"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:background="@drawable/mode_driving" />
+
+            <Button
+                android:id="@+id/imagebtn_roadsearch_tab_walk"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:background="@drawable/mode_walk" />
+        </LinearLayout>
+
+        <include layout="@layout/common_list_view" />
+    </LinearLayout>
+
+</LinearLayout>

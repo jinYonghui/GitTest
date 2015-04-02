@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 权限对应名称 -->
+    <string name="MOBILE_MAP_USER">员工定位</string>
+    <string name="MOBILE_MAP_FWZ">服务查询</string>
+    <string name="MOBILE_MAP_LOCATION">机器定位</string>
+    <string name="MOBILE_MAP_MACHINE">机器查询</string>
+    <string name="MOBILE_MAP_DF">手机导航</string>
+    <string name="MOBILE_JNKH">技能考核</string>
+    <string name="MOBILE_SJK">数据库</string>
+    <string name="MOBILE_RWD">我的工单</string>
+    <string name="MOBILE_ZSK">知识库</string>
+    <string name="MOBILE_SPBG">报告审核</string>
+    <string name="MOBILE_ATMWZ">ATM位置</string>
+    <string name="MOBILE_MAP">地图功能</string>
+    <string name="notice">公告信息</string>
+    <string name="sale">销售下单</string>
+    <string name="saleshow">销售单查询</string>
+    <string name="mysale">我的销售单</string>
+    <string name="saleshen">销售单审核</string>
+    <string name="MOBILE_XD">下单</string>
+    <string name="MOBILE_PROJECTSTATISTIC">项目管理统计</string>
+    <string name="MOBILE_PROJECTORDERAUDIT">项目工单审批</string>
+    <string name="MOBILE_PROJECTDEALORDER">项目工单销单</string>
+    <string name="MOBILE_ASSIGN">派单工作台</string>
+    <string name="WLJK_MOBILE">物流监控</string>
+    <string name="WLJK_MOBILE_HDGL">货单管理</string>
+    <string name="WLJK_MOBILE_TXQTSWBG">填写其他事物报告</string>
+    <string name="WLJK_MOBILE_QTSWGL">其他事物管理</string>
+    <string name="WLJK_MOBILE_TXRWBG">填写任务报告</string>
+    <string name="MOBILE_PXKHSJ">专项考核</string>
+    
+</resources>

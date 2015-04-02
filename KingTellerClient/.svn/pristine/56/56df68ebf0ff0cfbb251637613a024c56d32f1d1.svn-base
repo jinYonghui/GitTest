@@ -1,0 +1,68 @@
+package com.kingteller.client.activity.logisticmonitor;
+
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+import com.kingteller.R;
+import com.kingteller.client.activity.base.BaseFragmentActivity;
+import com.kingteller.client.activity.logisticmonitor.fragment.OtherConsignFragment;
+import com.kingteller.client.view.GroupListView;
+import com.kingteller.client.view.GroupListView.AddViewCallBack;
+import com.kingteller.client.view.OtherTaskFareGroupView;
+
+public class WriteOtherTaskActivity extends BaseFragmentActivity implements
+		OnClickListener {
+	
+	private GroupListView costType_group_list;
+
+	@Override
+	public void onCreate(Bundle paramBundle) {
+		// TODO Auto-generated method stub
+		super.onCreate(paramBundle);
+
+		setContentView(R.layout.layout_other_task_write);
+		initUI();
+		initData();
+	}
+
+	public void initUI() {
+		title_title.setText("任务内容");
+		title_left.setOnClickListener(this);
+		costType_group_list = (GroupListView) findViewById(R.id.bj_group_list);
+		costType_group_list.setAddViewCallBack(new AddViewCallBack() {
+
+			@Override
+			public void addView(GroupListView view) {
+				// TODO Auto-generated method stub
+				view.addItem(new OtherTaskFareGroupView(
+						WriteOtherTaskActivity.this, true));
+			}
+		});
+
+		OtherTaskFareGroupView bjView = new OtherTaskFareGroupView(this, false);
+		bjView.setOnClickListener(this);
+		costType_group_list.addItem(bjView);
+
+	}
+
+	public void initData() {
+		OtherConsignFragment consignFragment = new OtherConsignFragment();
+		getSupportFragmentManager().beginTransaction()
+				.add(R.id.otherconsign_li, consignFragment).commit();
+
+	}
+
+	@Override
+	public void onClick(View arg0) {
+		// TODO Auto-generated method stub
+		switch (arg0.getId()) {
+		case R.id.button_left:
+			finish();
+			break;
+
+		default:
+			break;
+		}
+	}
+}

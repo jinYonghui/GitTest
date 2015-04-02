@@ -1,0 +1,125 @@
+package com.kingteller.client.activity.logisticmonitor;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+
+import com.google.gson.reflect.TypeToken;
+import com.kingteller.R;
+import com.kingteller.client.activity.base.BaseFragmentActivity;
+import com.kingteller.client.adapter.OtherTaskConsignAdapter;
+import com.kingteller.client.bean.common.BasePageBean;
+import com.kingteller.client.bean.logisticmonitor.OtherTaskConsignBean;
+import com.kingteller.client.config.URLConfig;
+import com.kingteller.client.netauth.AjaxHttpCallBack;
+import com.kingteller.client.netauth.KTHttpClient;
+import com.kingteller.client.utils.ConfigUtils;
+import com.kingteller.client.view.GroupListView;
+import com.kingteller.client.view.ListViewForScrollView;
+import com.kingteller.client.view.OtherTaskFareGroupView;
+import com.kingteller.client.view.GroupListView.AddViewCallBack;
+import com.kingteller.client.view.datatype.LoadingEnum;
+import com.kingteller.framework.http.AjaxParams;
+import com.kingteller.framework.utils.CommonUtils;
+
+public class WriteOtherTaskActivityTest extends BaseFragmentActivity implements
+		OnClickListener {
+
+	private ListViewForScrollView lvfsv;
+	private GroupListView costType_group_list;
+	private OtherTaskConsignAdapter otherTaskConsignAdapter;
+	private List<OtherTaskConsignBean> otherTaskConsignlist = new ArrayList<OtherTaskConsignBean>();
+
+	@Override
+	protected void onCreate(Bundle arg0) {
+		// TODO Auto-generated method stub
+		super.onCreate(arg0);
+		setContentView(R.layout.layout_listview_scrollview);
+		initUI();
+		initData();
+	}
+
+	public void initUI() {
+		title_title.setText("任务内容");
+		title_left.setOnClickListener(this);
+
+		lvfsv = (ListViewForScrollView) findViewById(R.id.otherconsign_li);
+
+		costType_group_list = (GroupListView) findViewById(R.id.bj_group_list);
+		costType_group_list.setAddViewCallBack(new AddViewCallBack() {
+
+			@Override
+			public void addView(GroupListView view) {
+				// TODO Auto-generated method stub
+				view.addItem(new OtherTaskFareGroupView(
+						WriteOtherTaskActivityTest.this, true));
+			}
+		});
+
+		OtherTaskFareGroupView bjView = new OtherTaskFareGroupView(this, false);
+		bjView.setOnClickListener(this);
+		costType_group_list.addItem(bjView);
+
+	}
+
+	public void initData() {
+		otherTaskConsignAdapter = new OtherTaskConsignAdapter(this, otherTaskConsignlist);
+		getOtherTaskConsign();
+		lvfsv.setAdapter(otherTaskConsignAdapter);
+	}
+
+	@Override
+	public void onClick(View arg0) {
+		// TODO Auto-generated method stub
+		switch (arg0.getId()) {
+		case R.id.button_left:
+			finish();
+			break;
+
+		default:
+			break;
+		}
+
+	}
+	
+	public void getOtherTaskConsign() {	
+		if(!CommonUtils.isNetAvaliable(this)){
+			Toast.makeText(this, "网络异常，请稍后重试", Toast.LENGTH_SHORT).show();
+			//toastMsg();
+			return;
+		}
+		
+		Intent intent = this.getIntent(); 
+		KTHttpClient fh = new KTHttpClient(true);
+		AjaxParams params = new AjaxParams();
+		params.put("swdh", intent.getStringExtra("swdh"));
+
+		fh.get(ConfigUtils.CreateNoVersionUrl(this, URLConfig.WljkcUrl),
+				params, new AjaxHttpCallBack<BasePageBean<OtherTaskConsignBean>>(this,
+						new TypeToken<BasePageBean<OtherTaskConsignBean>>() {
+						}.getType(), true) {
+					
+					@Override
+					public void onFinish() {
+					}
+					
+					@Override
+					public void onDo(BasePageBean<OtherTaskConsignBean> data) {
+						if("".equals(data.getStatus()) ){
+							if (data.getList().size() > 0) {
+								otherTaskConsignlist = data.getList();
+								otherTaskConsignAdapter.setLists(data.getList());
+							} else {
+							}
+						}else{
+							toastMsg(data.getMsg());
+						}
+					};
+				});
+	}
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list_loading_view"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg"
+    android:gravity="top"
+    android:orientation="vertical" >
+
+    <com.kingteller.client.view.XListView
+        android:id="@+id/list_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="@dimen/navigation_item_divide"
+        android:drawSelectorOnTop="false"
+        android:layout_below="@+id/auto"
+        android:focusable="true"
+        android:visibility="gone" />
+
+    <include layout="@layout/common_loading_view" />
+
+</RelativeLayout>

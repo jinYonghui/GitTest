@@ -1,0 +1,17 @@
+eclipse.preferences.version=1
+encoding//src/com/kingteller/client/KingTellerApplication.java=UTF-8
+encoding//src/com/kingteller/client/activity/account/fragment/MoreFragment.java=UTF-8
+encoding//src/com/kingteller/client/activity/base/BaseUploadActivity.java=UTF-8
+encoding//src/com/kingteller/client/activity/common=UTF-8
+encoding//src/com/kingteller/client/adapter/FloatWaitDoAdapter.java=UTF-8
+encoding//src/com/kingteller/client/adapter/WaitDoAdapter.java=UTF-8
+encoding//src/com/kingteller/client/config=UTF-8
+encoding//src/com/kingteller/client/netauth=UTF-8
+encoding//src/com/kingteller/client/recever=UTF-8
+encoding//src/com/kingteller/client/service=UTF-8
+encoding//src/com/kingteller/client/utils=UTF-8
+encoding//src/com/kingteller/client/view=UTF-8
+encoding//src/com/kingteller/framework=UTF-8
+encoding//src/com/kingteller/modules/zxing=UTF-8
+encoding/<project>=UTF-8
+encoding/assets=UTF-8

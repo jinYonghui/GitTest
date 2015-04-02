@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/common_padding"
+    android:paddingRight="@dimen/common_padding"
+    android:paddingTop="@dimen/common_padding5" >
+
+    <TextView
+        android:id="@+id/numId"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:textColor="@color/black" />
+
+    <com.kingteller.client.view.KingTellerEditText
+        xmlns:aaron="http://schemas.android.com/apk/res/com.kingteller"
+        android:id="@+id/editText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        aaron:fieldLines="2"
+        aaron:fieldHint=""
+        aaron:fieldName="editText"
+        aaron:fieldType="String"
+        android:background="@color/white"
+        android:gravity="left"
+        android:textSize="@dimen/common_text_small" />
+
+    <!--
+         <EditText
+        android:id="@+id/editText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="@null"
+        android:focusable="false"
+        android:gravity="left"
+        android:hint="@null"
+        android:textSize="@dimen/common_text_small" />-->
+
+    <Button
+        android:id="@+id/btn_choose"
+        android:layout_width="@dimen/common_button_height"
+        android:layout_height="@dimen/common_button_height"
+        android:layout_marginLeft="@dimen/common_padding5"
+        android:background="@drawable/btn_green"
+        android:text="选择"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_padding5"
+        android:layout_marginRight="0dp"
+        android:background="@drawable/editgroup_item_delete"
+        android:gravity="center" />
+
+</LinearLayout>

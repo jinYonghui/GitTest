@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical"
+    android:padding="@dimen/common_padding" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        
+        <TextView
+            android:id="@+id/work_order_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:text="工单单号:"
+            android:textColor="@color/text_666666"
+            android:textSize="@dimen/common_text_13" />
+
+        <TextView
+            android:id="@+id/orderNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:layout_toRightOf="@+id/work_order_no"
+            android:textColor="@color/text_666666"
+            android:textSize="@dimen/common_text_13" />
+        
+        <TextView
+            android:id="@+id/orderStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/common_text_13" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/atm_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:text="机器信息:"
+            android:textColor="@color/text_666666"
+            android:textSize="@dimen/common_text_13" />
+
+        <TextView
+            android:id="@+id/atmMsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:layout_toRightOf="@+id/atm_msg"
+            android:textColor="@color/text_666666"
+            android:textSize="@dimen/common_text_13" />
+        
+        <TextView
+            android:id="@+id/backflag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="(退回)"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/common_text_13"
+            android:visibility="gone"
+             />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:text="网点设备简称:"
+            android:textColor="@color/text_666666"
+            android:textSize="@dimen/common_text_13" />
+
+        <TextView
+            android:id="@+id/wdsbjc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:textColor="@color/text_666666"
+            android:textSize="@dimen/common_text_13" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:text="任务信息:"
+            android:textColor="@color/text_666666"
+            android:textSize="@dimen/common_text_13" />
+
+        <TextView
+            android:id="@+id/taskInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:textColor="@color/text_666666"
+            android:textSize="@dimen/common_text_13" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/assign_man"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:text="派单人:"
+            android:textColor="@color/text_666666"
+            android:textSize="@dimen/common_text_13" />
+
+        <TextView
+            android:id="@+id/assignMan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:layout_toRightOf="@+id/assign_man"
+            android:textColor="@color/text_666666"
+            android:textSize="@dimen/common_text_13" />
+
+        <TextView
+            android:id="@+id/assignTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/text_666666"
+            android:textSize="@dimen/common_text_13"
+            />
+    </RelativeLayout>
+    
+       <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:text="进度:"
+            android:textColor="@color/text_666666"
+            android:textSize="@dimen/common_text_13" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:textColor="@color/black"
+            android:textSize="@dimen/common_text_13" />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:text="预约时间:"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/common_text_13" />
+
+        <TextView
+            android:id="@+id/prearrangeDateStr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/common_text_13" />
+
+    </LinearLayout>
+    
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/acceptMalf"
+            android:layout_width="80dp"
+            android:layout_height="@dimen/small_button_height"
+            android:background="@drawable/btn_green"
+            android:text="接障"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+        
+        <Button
+            android:id="@+id/backMalf"
+            android:layout_width="80dp"
+            android:layout_height="@dimen/small_button_height"
+            android:background="@drawable/btn_red"
+            android:layout_marginLeft="@dimen/common_padding"
+            android:text="退单"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/fillReport"
+            android:layout_width="80dp"
+            android:layout_height="@dimen/small_button_height"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/btn_green"
+            android:text="填写报告"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.6dp"
+        android:layout_marginTop="@dimen/common_margin"
+        android:background="@color/divider_gray" />
+
+</LinearLayout>

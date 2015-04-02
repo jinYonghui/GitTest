@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="transparent">#00000000</color>
+    <color name="transparent_half">#66000000</color>
+    <color name="transparent_half_white">#66ffffff</color>
+    <color name="bright_foreground_dark">#ffffffff</color>
+    <color name="transparent_background">#99000000</color>
+    <color name="white">#ffffffff</color>
+    <color name="bg">#ffeeeeee</color>
+    <color name="black">#ff000000</color>
+    <color name="red">#ffee4136</color>
+    <color name="red2">#ffcc0000</color>
+    <color name="blue">#ff0000ff</color>
+    <color name="gray">#ffbbbbbb</color>
+    <color name="divider_gray">#ffd7d7d7</color>
+    <color name="yellow">#fffacb25</color>
+    <color name="yellow_two">#40facb25</color>
+    <color name="text_333333">#ff333333</color>
+    <color name="text_666666">#ff666666</color>
+    <color name="text_888888">#ff888888</color>
+    <color name="text_999999">#ff999999</color>
+    <color name="color_dddddd">#ffdddddd</color>
+    <color name="green">#ffa9d154</color>
+    <color name="comm_bk_input">#ffaaaaaa</color>
+    <color name="orange">#fffe6d00</color>
+    <color name="navigation_item_divide">#ffcccccc</color>
+    <color name="toolbar_divide">#ffcccccc</color>
+    <color name="menu_color">#ff1874CD</color>
+
+    <!-- 自定义对话框颜色设置 -->
+    <color name="sdl_bright_foreground_dark">#fff3f3f3</color>
+    <color name="sdl_bright_foreground">#ff000000</color>
+    <color name="sdl_bright_foreground_disabled_dark">#ff4c4c4c</color>
+    <color name="sdl_bright_foreground_disabled">#ffb2b2b2</color>
+    <color name="sdl_message_text">#333333</color>
+    <color name="sdl_title_text">#33B5E5</color>
+    <color name="sdl_title_separator">#33B5E5</color>
+    <color name="sdl_button_text">@color/sdl_text</color>
+    <color name="sdl_button_normal">@android:color/transparent</color>
+    <color name="sdl_button_pressed">#9933B5E5</color>
+    <!-- 60 % opacity -->
+    <color name="sdl_button_focused">#4C33B5E5</color>
+    <!-- 30 % opacity -->
+    <color name="sdl_button_separator">#25000000</color>
+    <!-- 7% opacity -->
+
+
+    <!-- 二维码 -->
+    <color name="contents_text">#ff000000</color>
+    <color name="encode_view">#ffffffff</color>
+    <color name="possible_result_points">#c0ffbd21</color>
+    <!-- Android standard ICS color -->
+    <color name="result_minor_text">#ffc0c0c0</color>
+    <color name="result_points">#c099cc00</color>
+    <!-- Android standard ICS color -->
+    <color name="result_text">#ffffffff</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_laser">#ffcc0000</color>
+    <!-- Android standard ICS color -->
+    <color name="viewfinder_mask">#60000000</color>
+
+</resources>

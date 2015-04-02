@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ly"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <!-- 用户设置 -->
+
+        <com.kingteller.client.view.KingTellerEditText
+            xmlns:aaron="http://schemas.android.com/apk/res/com.kingteller"
+            android:id="@+id/username"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_input_height"
+            android:layout_marginTop="@dimen/common_margin"
+            aaron:fieldHint="用户名"
+            aaron:fieldTitle="用户名："
+            aaron:fieldType="String"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/common_padding5"
+            android:paddingRight="@dimen/common_padding5" />
+
+        <!-- 用户编号设置 -->
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/navigation_item_divide"
+            android:background="@color/navigation_item_divide" />
+
+        <com.kingteller.client.view.KingTellerEditText
+            xmlns:aaron="http://schemas.android.com/apk/res/com.kingteller"
+            android:id="@+id/usecode"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_input_height"
+            aaron:fieldHint="用户编号"
+            aaron:fieldTitle="用户编号："
+            aaron:fieldType="String"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/common_padding5"
+            android:paddingRight="@dimen/common_padding5" />
+
+        <!-- 角色部门设置 -->
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/navigation_item_divide"
+            android:background="@color/navigation_item_divide" />
+
+        <com.kingteller.client.view.KingTellerEditText
+            xmlns:aaron="http://schemas.android.com/apk/res/com.kingteller"
+            android:id="@+id/department"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_input_height"
+            aaron:fieldHint="部门"
+            aaron:fieldTitle="部门："
+            aaron:fieldType="String"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/common_padding5"
+            android:paddingRight="@dimen/common_padding5" />
+
+        <!-- 日期设置 -->
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/navigation_item_divide"
+            android:background="@color/navigation_item_divide" />
+
+        <com.kingteller.client.view.KingTellerEditText
+            xmlns:aaron="http://schemas.android.com/apk/res/com.kingteller"
+            android:id="@+id/dataset"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_input_height"
+            aaron:fieldHint="日期设置"
+            aaron:fieldTitle="日期设置："
+            aaron:fieldType="Date"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/common_padding5"
+            android:paddingRight="@dimen/common_padding5" />
+
+        <!-- 开始时间 -->
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/navigation_item_divide"
+            android:background="@color/navigation_item_divide" />
+
+        <com.kingteller.client.view.KingTellerEditText
+            xmlns:aaron="http://schemas.android.com/apk/res/com.kingteller"
+            android:id="@+id/startTime"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_input_height"
+            aaron:fieldHint="开始时间"
+            aaron:fieldTitle="开始时间："
+            aaron:fieldType="Time"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/common_padding5"
+            android:paddingRight="@dimen/common_padding5" />
+
+        <!-- 结束时间 -->
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/navigation_item_divide"
+            android:background="@color/navigation_item_divide" />
+
+        <com.kingteller.client.view.KingTellerEditText
+            xmlns:aaron="http://schemas.android.com/apk/res/com.kingteller"
+            android:id="@+id/endTime"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_input_height"
+            aaron:fieldHint="结束时间"
+            aaron:fieldTitle="结束时间："
+            aaron:fieldType="Time"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/common_padding5"
+            android:paddingRight="@dimen/common_padding5" />
+    </LinearLayout>
+
+</LinearLayout>

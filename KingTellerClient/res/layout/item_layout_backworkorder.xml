@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/common_padding" >
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/backorderType"
+            android:orientation="vertical" >
+
+            <RadioButton
+                android:id="@+id/radioButton1"
+                style="@style/common_radiobutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_padding"
+                android:checked="false"
+                android:text="机器无故障/故障已修复"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_text_14" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                style="@style/common_radiobutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_padding"
+                android:layout_marginTop="@dimen/common_padding"
+                android:checked="false"
+                android:text="派单错误"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_text_14" />
+
+            <RadioButton
+                android:id="@+id/radioButton3"
+                style="@style/common_radiobutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_padding"
+                android:layout_marginTop="@dimen/common_padding"
+                android:checked="false"
+                android:text="重复派单"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_text_14" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/backorderType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="退单原因:"
+            android:textColor="@color/black"
+            android:textSize="@dimen/common_text_14" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/common_padding" >
+
+        <EditText
+            android:id="@+id/backorderEditText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/backorderRemark"
+            android:layout_marginLeft="@dimen/common_padding"
+            android:hint="@null"
+            android:orientation="vertical"
+            android:textColor="@color/black"
+            android:textSize="@dimen/common_text_14" >
+        </EditText>
+
+        <TextView
+            android:id="@+id/backorderRemark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="退单说明:"
+            android:textColor="@color/black"
+            android:textSize="@dimen/common_text_14" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_padding" >
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_green"
+            android:text="确认退单" />
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_padding"
+            android:layout_weight="1"
+            android:background="@drawable/btn_red"
+            android:text="取消" />
+    </LinearLayout>
+
+</LinearLayout>

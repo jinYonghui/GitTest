@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical" >
+
+    <com.kingteller.client.view.KingTellerScrollView
+        android:id="@+id/layout_scroll"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <com.kingteller.client.view.ListViewForScrollView
+                android:id="@+id/otherconsign_li"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+            </com.kingteller.client.view.ListViewForScrollView>
+
+            <com.kingteller.client.view.GroupListView
+                android:id="@+id/bj_group_list"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+            </com.kingteller.client.view.GroupListView>
+  
+            <com.kingteller.client.view.KingTellerEditText
+                xmlns:aaron="http://schemas.android.com/apk/res/com.kingteller"
+                android:id="@+id/qclcs"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_input_height"
+                aaron:fieldEnabled="false"
+                aaron:fieldName="skillServeNumber"
+                aaron:fieldTitle="起程里程数："
+                aaron:fieldType="String"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/common_padding5"
+                android:paddingRight="@dimen/common_padding5" />
+            
+            <com.kingteller.client.view.KingTellerEditText
+                xmlns:aaron="http://schemas.android.com/apk/res/com.kingteller"
+                android:id="@+id/fhlcs"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_input_height"
+                aaron:fieldEnabled="false"
+                aaron:fieldName="skillServeNumber"
+                aaron:fieldTitle="返回里程数："
+                aaron:fieldType="String"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/common_padding5"
+                android:paddingRight="@dimen/common_padding5" />
+            
+         <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_title_height"
+                android:layout_marginLeft="@dimen/common_margin"
+                android:gravity="left|center_vertical"
+                android:text="附件信息"
+                android:textColor="@color/black"
+                android:visibility="gone"
+                android:textSize="@dimen/common_text_title" />
+
+            <com.kingteller.client.view.GroupUploadFileView
+                android:id="@+id/item_add_pic"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:visibility="gone"
+                android:orientation="vertical" >
+            </com.kingteller.client.view.GroupUploadFileView>
+
+        </LinearLayout>
+        
+        
+    </com.kingteller.client.view.KingTellerScrollView>
+
+    <LinearLayout
+        android:id="@+id/layout_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_padding5" >
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:layout_weight="1"
+            android:background="@drawable/btn_green"
+            android:text="提交"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:layout_weight="1"
+            android:background="@drawable/btn_red"
+            android:text="返回任务清单"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_lx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:layout_weight="1"
+            android:background="@drawable/btn_orange"
+            android:text="联系调度员"
+            android:textColor="@color/white" />
+    </LinearLayout>
+<!--     
+    <include layout="@layout/common_loading_view" /> -->
+</RelativeLayout>

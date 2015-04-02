@@ -1,0 +1,205 @@
+package com.kingteller.client.utils;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.kingteller.client.bean.common.CommonSelectData;
+
+/**
+ * 一些固定数据的设置工具类
+ * 
+ * @author 王定波
+ * 
+ */
+public class CommonSelcetUtils {
+	// 通用的radio 01
+	public final static int radios01 = 0;
+	private final static String[] radios01Text = { "是", "否" };
+	private final static String[] radios01Value = { "1", "0" };
+
+	// 工作类别   添加"客服报废"  "COPY_LOG""拷贝日志""COPY_VIDEO""拷贝录像""MODIFY_ITEM""项目改造"
+	public final static int workType = 1;
+	public final static String[] workTypeText = { "故障维护", "软件升级", "调试机器",
+			"PM", "开通机器", "账务处理", "培训", "接机", "移机", "退机", "安装机器", "检查机器", "其他", "硬件改造","客服报废"};
+
+	public final static String[] workTypeValue = { "NORMAL", "SOFT_UPGRAD",
+			"DEBUG", "PM", "START", "ACCOUNTANT", "TRAINING",
+			"RECEIVE_MACHINE", "MOVE_MACHINE", "BACK_MACHINE", "SETUP_MACHINE",
+			"CHECK_MACHINE", "OTHER", "ADD_COMPONENT","SCRAP_MACHINE"};
+
+	// 是否新机开通
+	public final static int workTypeNewMove = 2;
+	private final static String[] workTypeNewMoveText = { "移机开通", "新机开通" };
+	private final static String[] workTypeNewMoveValue = { "MOVE", "NEW" };
+
+	// 是否新机开通
+	public final static int workTypeNewMove1 = 11;
+	private final static String[] workTypeNewMove1Text = { "移机开通", "移走机器" };
+	private final static String[] workTypeNewMove1Value = { "MOVE", "MOVE_OUT" };
+
+	// 机器是否正常服务
+	public final static int workFinishFlag = 3;
+	private final static String[] workFinishFlagText = { "正常对外", "停机", "机器带故障运行",
+			"未上线停机", "请选择" };
+	private final static String[] workFinishFlagValue = { "0", "1", "2", "3",
+			"99" };
+
+	// 是否备件原因
+	public final static int troubleReasonCode = 4;
+	private final static String[] troubleReasonCodeText = { "人为破坏", "银行人员操作不当", "设备运行故障",
+			"其它" };
+	private final static String[] troubleReasonCodeValue = { "0", "1", "2", "3" };
+
+	// 通用的radio 12
+	public final static int radios12 = 5;
+	private final static String[] radios12Text = { "是", "否" };
+	private final static String[] radios12Value = { "1", "2" };
+
+	// 服务评价
+	public final static int serveAssessResultCode = 6;
+	private final static String[] serveAssessResultCodeText = { "很好", "较好",
+			"一般", "较差", "很差" };
+	private final static String[] serveAssessResultCodeValue = { "0", "1", "2",
+			"3", "4" };
+
+	// 服务方式
+	public final static int servType = 7;
+	private final static String[] servTypeText = { "现场服务", "电话服务", "第三方处理" };
+	private final static String[] servTypeValue = { "SITE_SERV", "TEL_SERV",
+			"OTHER_SERV" };
+
+	// 工作类别--其他事物
+	public final static int workTypeOtherMatter = 8;
+	private final static String[] workTypeOtherMatterText = { "全部", "送资料",
+			"送合同", "银行开会", "拿钥匙", "交水电费", "协助其他部门", "其他", "洽谈合同", "签合同", "移机",
+			"退机", "装机", "谈判", "选点", "网点巡逻" };
+	private final static String[] workTypeOtherMatterValue = { "ALL",
+			"SEND_DATA", "SEND_CONT", "BANK_MEET", "GET_LOCK", "CHARGE_FEES",
+			"HELP_OTHER", "OTHER", "QTHT", "QHT", "YJ", "TJ", "ZJ", "TP", "XD",
+			"WDXL" };
+
+	// 工作类别--物流
+	public final static int workTypeLogistic = 9;
+	private final static String[] workTypeLogisticText = { "退机", "货运", "其他方式",
+			"发机", "移机" };
+	private final static String[] workTypeLogisticValue = { "backMachine",
+			"transferGoods", "other", "sendMachine", "moveMachine" };
+
+	// 接机类型
+	public final static int receiverType = 10;
+	private final static String[] receiverTypeText = { "客户", "银行", "销售", "运营",
+			"其他" };
+	private final static String[] receiverTypeValue = { "KH", "YH", "XS", "YY",
+			"QT" };
+
+	// 费用类型
+	public final static int feeType = 12;
+	private final static String[] feeTypeText = { "非维护车费", "维护车费", "车船费",
+			"出差补助", "出差住宿", "住宿节约补助" };
+	private final static String[] feeTypeValue = {
+			"402881cd42318c1c0142319644360010",
+			"402881cd42318c1c014231961501000f",
+			"ff808081444d876901444e09a6ed1c97",
+			"ff808081444d876901444e0ab7bf1cf2",
+			"ff808081444d876901444e0a227a1cbc",
+			"ff808081444d876901444e0bfe3c1d66" };
+
+	
+	//停机原因
+	public final static int stopReasonType = 13;
+	private final static String[] stopReasonTypeText = { "客服原因", "备件原因",
+			"运营原因", "销售原因", "其他原因", "已开通", "已移机后(未开通)", "准备撤机" };
+	private final static String[] stopReasonTypeValue = { "SERVICE_REASON",
+			"REPAIRS_REASON", "OPERATION_REASON", "SALES_REASON",
+			"OTHER_REASON", "START_REASON", "MOVE_REASON", "BACK_REASON" };
+	
+	
+	public final static int costType = 14;
+	private final static String [] costTypeText = {"保养维修费","货车加油费","路桥费","停车费","车队外出住宿费"};
+	private final static String [] costTypeValue = {"ff80808145a69c8f0145a6c95b960988","ff8080814327f92801432cbd55964211",
+		   "ff8080814327f92801432cbdf7a7423d","ff8080814327f92801432cbe74d84261","ff8080814327f92801432cbf58064293"};
+	
+	/**
+	 * 获取select的方法
+	 * 
+	 * @param type
+	 * @return
+	 */
+	public static List<CommonSelectData> getSelectList(int type) {
+		String[] text = null, value = null;
+		switch (type) {
+		case radios01:
+			text = radios01Text;
+			value = radios01Value;
+			break;
+		case workType:
+			text = workTypeText;
+			value = workTypeValue;
+			break;
+		case workTypeNewMove:
+			text = workTypeNewMoveText;
+			value = workTypeNewMoveValue;
+			break;
+		case workFinishFlag:
+			text = workFinishFlagText;
+			value = workFinishFlagValue;
+			break;
+		case radios12:
+			text = radios12Text;
+			value = radios12Value;
+			break;
+		case troubleReasonCode:
+			text = troubleReasonCodeText;
+			value = troubleReasonCodeValue;
+			break;
+		case serveAssessResultCode:
+			text = serveAssessResultCodeText;
+			value = serveAssessResultCodeValue;
+			break;
+		case servType:
+			text = servTypeText;
+			value = servTypeValue;
+			break;
+		case workTypeOtherMatter:
+			text = workTypeOtherMatterText;
+			value = workTypeOtherMatterValue;
+			break;
+		case workTypeLogistic:
+			text = workTypeLogisticText;
+			value = workTypeLogisticValue;
+			break;
+		case receiverType:
+			text = receiverTypeText;
+			value = receiverTypeValue;
+			break;
+		case workTypeNewMove1:
+			text = workTypeNewMove1Text;
+			value = workTypeNewMove1Value;
+			break;
+		case feeType:
+			text = feeTypeText;
+			value = feeTypeValue;
+			break;
+		case stopReasonType:
+			text = stopReasonTypeText;
+			value = stopReasonTypeValue;
+			break;
+		case costType:
+			text = costTypeText;
+			value = costTypeValue;
+			break;
+		default:
+			break;
+		}
+		int length = text.length;
+		List<CommonSelectData> lists = new ArrayList<CommonSelectData>();
+		for (int i = 0; i < length; i++) {
+			CommonSelectData data = new CommonSelectData();
+			data.setText(text[i]);
+			data.setValue(value[i]);
+			lists.add(data);
+		}
+
+		return lists;
+	}
+}

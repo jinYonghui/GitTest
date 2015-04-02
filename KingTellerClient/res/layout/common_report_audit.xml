@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/layout_audit_common"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/auditTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_title_height"
+        android:layout_marginLeft="@dimen/common_margin"
+        android:gravity="left|center_vertical"
+        android:text="维护报告意见"
+        android:textColor="@color/black"
+        android:textSize="@dimen/common_text_title" />
+
+    <com.kingteller.client.view.KingTellerEditText
+        xmlns:aaron="http://schemas.android.com/apk/res/com.kingteller"
+        android:id="@+id/auditContent"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        aaron:fieldLines="3"
+        aaron:fieldName="auditContent"
+        aaron:fieldRequested="true"
+        aaron:fieldTitle="审核意见："
+        aaron:fieldType="String"
+        android:background="@color/white"
+        android:paddingBottom="@dimen/common_padding"
+        android:paddingLeft="@dimen/common_padding5"
+        android:paddingRight="@dimen/common_padding5"
+        android:paddingTop="@dimen/common_padding" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/navigation_item_divide"
+        android:background="@color/navigation_item_divide" />
+
+    <com.kingteller.client.view.KingTellerEditText
+        xmlns:aaron="http://schemas.android.com/apk/res/com.kingteller"
+        android:id="@+id/auditRemark"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        aaron:fieldLines="3"
+        aaron:fieldName="auditRemark"
+        aaron:fieldRequested="true"
+        aaron:fieldTitle="备注："
+        aaron:fieldType="String"
+        android:background="@color/white"
+        android:paddingBottom="@dimen/common_padding"
+        android:paddingLeft="@dimen/common_padding5"
+        android:paddingRight="@dimen/common_padding5"
+        android:paddingTop="@dimen/common_padding" />
+
+</LinearLayout>

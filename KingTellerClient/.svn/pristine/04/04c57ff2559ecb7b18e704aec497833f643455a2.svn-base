@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/workorder_condition"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_input_height"
+            android:background="@color/white"
+            android:orientation="horizontal" >
+
+            <com.kingteller.client.view.ConditionView
+                xmlns:aaron="http://schemas.android.com/apk/res/com.kingteller"
+                android:id="@+id/assignWorkerName"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/common_input_height"
+                android:layout_weight="1"
+                aaron:fieldHint="工号/姓名"
+                android:paddingLeft="@dimen/common_padding"
+                android:paddingRight="@dimen/common_padding" />
+
+            <Button
+                android:id="@+id/btn_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/common_padding"
+                android:background="@drawable/icon_search" />
+        </LinearLayout>
+
+        <include layout="@layout/common_list_view" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:padding="@dimen/common_padding5" >
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_green"
+            android:text="选择"
+            android:textColor="@color/white" />
+        
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:layout_weight="1"
+            android:background="@drawable/btn_red"
+            android:text="取消"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</RelativeLayout>

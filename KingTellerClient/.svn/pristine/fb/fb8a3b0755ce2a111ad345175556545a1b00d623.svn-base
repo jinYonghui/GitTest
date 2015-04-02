@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:background="@drawable/editgroup_item_delete" />
+
+    <com.kingteller.client.view.KingTellerEditText
+        xmlns:aaron="http://schemas.android.com/apk/res/com.kingteller"
+        android:id="@+id/troubleType"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_input_height"
+        aaron:fieldTitle="故障类别："
+        aaron:fieldType="Dialog"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/common_padding5"
+        android:paddingRight="@dimen/common_padding5" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/navigation_item_divide"
+        android:background="@color/navigation_item_divide" />
+
+    <com.kingteller.client.view.KingTellerEditText
+        xmlns:aaron="http://schemas.android.com/apk/res/com.kingteller"
+        android:id="@+id/troubleModule"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_input_height"
+        aaron:fieldTitle="故障部件："
+        aaron:fieldType="Dialog"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/common_padding5"
+        android:paddingRight="@dimen/common_padding5" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/navigation_item_divide"
+        android:background="@color/navigation_item_divide" />
+
+    <com.kingteller.client.view.KingTellerEditText
+        xmlns:aaron="http://schemas.android.com/apk/res/com.kingteller"
+        android:id="@+id/troubleRemarkId"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_input_height"
+        aaron:fieldTitle="故障描述："
+        aaron:fieldType="Dialog"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/common_padding5"
+        android:paddingRight="@dimen/common_padding5" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/navigation_item_divide"
+        android:background="@color/navigation_item_divide" />
+
+    <com.kingteller.client.view.KingTellerEditText
+        xmlns:aaron="http://schemas.android.com/apk/res/com.kingteller"
+        android:id="@+id/handleSubId"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        aaron:fieldLines="3"
+        aaron:fieldTitle="处理过程："
+        aaron:fieldType="Dialog"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/common_padding5"
+        android:paddingRight="@dimen/common_padding5"
+        android:paddingTop="@dimen/common_padding"
+        android:paddingBottom="@dimen/common_padding" />
+
+    <LinearLayout
+        android:id="@+id/liearOther"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/navigation_item_divide"
+            android:background="@color/navigation_item_divide" />
+
+        <com.kingteller.client.view.KingTellerEditText
+            xmlns:aaron="http://schemas.android.com/apk/res/com.kingteller"
+            android:id="@+id/otherDescription"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/common_input_height"
+            aaron:fieldTitle="其他说明："
+            aaron:fieldType="String"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/common_padding5"
+            android:paddingRight="@dimen/common_padding5" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/navigation_item_divide"
+        android:background="@color/navigation_item_divide" />
+
+    <com.kingteller.client.view.KingTellerEditText
+        xmlns:aaron="http://schemas.android.com/apk/res/com.kingteller"
+        android:id="@+id/isChangeModule"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/common_input_height"
+        aaron:fieldTitle="是否更换备件："
+        aaron:fieldType="Select"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/common_padding5"
+        android:paddingRight="@dimen/common_padding5" />
+
+    <LinearLayout
+        android:id="@+id/layout_wl"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="vertical" >
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/navigation_item_divide"
+            android:background="@color/navigation_item_divide" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <com.kingteller.client.view.KingTellerEditText
+                xmlns:aaron="http://schemas.android.com/apk/res/com.kingteller"
+                android:id="@+id/installBjWlId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                aaron:fieldLines="3"
+                aaron:fieldTitle="安装的物料："
+                aaron:fieldType="Dialog"
+                android:background="@color/white"
+                android:paddingBottom="@dimen/common_padding"
+                android:paddingLeft="@dimen/common_padding5"
+                android:paddingRight="@dimen/common_padding5"
+                android:paddingTop="@dimen/common_padding" />
+
+            <Button
+                android:id="@+id/btn_installBjWlId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/common_margin"
+                android:background="@color/transparent"
+                android:text="清除"
+                android:textColor="@color/text_666666" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/navigation_item_divide"
+            android:background="@color/navigation_item_divide" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <com.kingteller.client.view.KingTellerEditText
+                xmlns:aaron="http://schemas.android.com/apk/res/com.kingteller"
+                android:id="@+id/downBjWlId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                aaron:fieldLines="3"
+                aaron:fieldTitle="原装的物料："
+                aaron:fieldType="Dialog"
+                android:background="@color/white"
+                android:paddingBottom="@dimen/common_padding"
+                android:paddingLeft="@dimen/common_padding5"
+                android:paddingRight="@dimen/common_padding5"
+                android:paddingTop="@dimen/common_padding" />
+
+            <Button
+                android:id="@+id/btn_downBjWlId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/common_margin"
+                android:background="@color/transparent"
+                android:text="清除"
+                android:textColor="@color/text_666666" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
